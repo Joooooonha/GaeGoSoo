@@ -12,7 +12,7 @@
 | 1 | Spring Boot 서비스를 서버에 올려라 | ✅ | 2026-09-10 | [기록](level1/mission-01-run-spring-boot.md) |
 | 2 | 환경변수 때문에 서비스가 다르게 동작한다 | ✅ | 2026-09-11 | [기록](level1/mission-02-env-vars.md) |
 | 3 | 실행 중인 프로세스를 찾아라 | ✅ | 2026-09-11 | [기록](level1/mission-03-process.md) |
-| 4 | CPU를 과도하게 사용하는 프로세스를 찾아라 | ⬜ | | |
+| 4 | CPU를 과도하게 사용하는 프로세스를 찾아라 | ✅ | 2026-09-11 | [기록](level1/mission-04-cpu.md) |
 | 5 | 메모리 부족을 진단하라 | ⬜ | | |
 | 6 | 디스크를 복구하라 | ⬜ | | |
 | 7 | Permission denied를 해결하라 | ⬜ | | |
