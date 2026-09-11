@@ -95,7 +95,7 @@ Mission 3부터 블라인드 진단을 유지하되, 매 미션은 사용자가 
 - 실제 원인: 학습용 Python 프로세스(PID 44918)가 `bytearray`로 약 256MiB를 점유하고 있었음.
 - 관찰: `free -h`에서 `available`이 181MiB, swap은 0B였고, `ps aux --sort=-%mem`에서 해당 프로세스가 `%MEM` 28.8, RSS 268816KiB를 사용 중임을 확인함.
 - 조치 및 검증: `kill 44918` 후 해당 프로세스가 사라졌고, `available`은 420MiB로 회복됨. `curl localhost:8080/health`도 `OK`를 반환함.
-- 핵심 구분: `free`가 작아도 Linux는 캐시를 회수할 수 있으므로 `available`을 중심으로 판단한다. VSZ는 가상 주소 공간, RSS는 실제 RAM 점유다. Java GC는 JVM 내부의 힙을 다루며, Linux 레벨에서는 Java를 포함한 모든 프로세스의 RSS·전체 여유 메모리·swap을 함께 관찰한다.
+- 핵심 회고: 메모리가 의심되면 `free -h`로 전체 여유와 swap을 확인하고, `ps aux --sort=-%mem`으로 고점유 프로세스를 찾는다. `free`보다 `available`을 중심으로 판단하며, 조치 후에는 `free -h`·`ps`/`top`·`/health`로 자원 회복과 서비스 정상 상태를 각각 검증한다. 실제 서비스의 재시작은 완화책이고, 메모리 점유 원인 분석은 별도로 필요하다.
 
 ### 다음 예정 순서
 
